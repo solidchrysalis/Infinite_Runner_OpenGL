@@ -41,3 +41,7 @@
 *.dwo
 
 .git/
+build/
+cmake/
+compile_commands.json
+CMakeFiles/
