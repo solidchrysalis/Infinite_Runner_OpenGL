@@ -5,8 +5,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "shader_m.h"
+#include "shader.h"
 #include "camera.h"
+#include "game.h"
 
 #include <iostream>
 
@@ -17,6 +18,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 Camera camera(glm::vec3(-1.0f, 0.0f, 0.0f));
+Game game;
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
@@ -61,9 +63,11 @@ int main() {
         return -1;
     }
 
+    game.initialize();
+
     //glEnable(GL_DEPTH_TEST);
 
-    Shader floor("../src/floor.vs", "../src/floor.fs");
+    //Shader floor("../src/floor.vs", "../src/floor.fs");
 
     float vertices[] = {
       -0.5f, -0.5f, 0.0f,
@@ -82,14 +86,17 @@ int main() {
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
-        processInput(window);
+        
+
+
+        /*processInput(window);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         floor.use();
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
-
+*/
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
